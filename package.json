@@ -1,0 +1,19 @@
+{
+  "name": "naviflow-ppci-pronto-soccorso",
+  "version": "1.0.0",
+  "description": "NaviFlow - Protocolli di Presa in Carico Infermieristica (PPCI) Pronto Soccorso - Nucleo NAVI",
+  "type": "module",
+  "scripts": {
+    "start": "python3 -m http.server 3000"
+  },
+  "keywords": [
+    "emergency-medicine",
+    "ppci",
+    "pronto-soccorso",
+    "infermieri",
+    "pwa",
+    "navi"
+  ],
+  "author": "NAVI Emergency Medicine Team",
+  "license": "ISC"
+}

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>NaviFlow - PPCI Pronto Soccorso (Nucleo NAVI)</title>
+
+  <!-- PWA & Mobile Meta Tags -->
+  <meta name="description" content="NaviFlow: Protocolli di Presa in Carico Infermieristica (PPCI) per il Nucleo NAVI di Pronto Soccorso - ARNAS Civico Rev. 1">
+  <meta name="theme-color" content="#0284c7">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="NaviFlow">
+  <link rel="apple-touch-icon" href="./icons/icon-192.png">
+  <link rel="icon" type="image/svg+xml" href="./icons/icon.svg">
+  <link rel="manifest" href="./manifest.json">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+
+  <!-- Top Header Navigation -->
+  <header class="header">
+    <div class="container nav-bar">
+      <div class="logo-group" id="logo-home-link" title="Torna alla Dashboard dei 13 PPCI">
+        <div class="logo-badge">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+          </svg>
+        </div>
+        <div class="logo-titles">
+          <span class="logo-main">Navi<span class="logo-accent">Flow</span></span>
+          <span class="logo-sub">PPCI Pronto Soccorso • NAVI</span>
+        </div>
+      </div>
+
+      <div class="nav-actions">
+        <!-- Live Offline / Online Badge -->
+        <div class="status-badge" id="status-badge" title="Stato connessione e disponibilità offline">
+          <span class="status-dot"></span>
+          <span id="status-text">100% Offline Ready</span>
+        </div>
+
+        <!-- General Snippets Button -->
+        <button class="btn-icon" id="btn-general-snippets" title="Frasi Rapide Diario Clinico">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+          </svg>
+        </button>
+
+        <!-- Dark / Light Mode Switch -->
+        <button class="btn-icon" id="theme-toggle" title="Cambia tema Chiaro / Scuro">
+          <span id="theme-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </span>
+        </button>
+
+        <!-- PWA Install Prompt Button (Android / Chrome) -->
+        <button class="btn-pwa hidden" id="pwa-install-btn" title="Installa l'applicazione sulla schermata Home">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          <span>Installa</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Application Body -->
+  <main class="container" style="flex: 1; padding-top: 1rem; padding-bottom: 3rem;">
+
+    <!-- 1. DASHBOARD VIEW -->
+    <section id="dashboard-view">
+      
+      <!-- Institutional Info Banner -->
+      <div class="hero-banner">
+        <div class="hospital-badge-row">
+          <span class="hospital-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="12" y1="8" x2="12" y2="16"></line>
+              <line x1="8" y1="12" x2="16" y2="12"></line>
+            </svg>
+            ARNAS Civico • Rev. 1 | Nucleo NAVI
+          </span>
+
+          <div class="codes-legend">
+            <span>Codici Applicabili:</span>
+            <span class="code-pill c3">Codice 3 (Azzurro)</span>
+            <span class="code-pill c4">Codice 4 (Verde)</span>
+            <span>| Escalation:</span>
+            <span class="code-pill c1">Codice 1/2 (Area Critica)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Instant Fast Search Bar -->
+      <div class="search-container">
+        <div class="search-input-wrapper">
+          <span class="search-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </span>
+          <input 
+            type="search" 
+            id="search-input" 
+            class="search-input" 
+            placeholder="Cerca sintomo, protocollo (es. dispnea, femore, ECG <10 min) o premi /" 
+            autocomplete="off"
+            spellcheck="false"
+          >
+          <button class="search-clear hidden" id="search-clear" title="Cancella ricerca">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Filter Category Pills -->
+      <div class="filter-pills">
+        <button class="filter-pill active" data-filter="all">Tutti i 13 PPCI</button>
+        <button class="filter-pill" data-filter="t1_10min">Target T1 &lt; 10 min (ECG/EGA)</button>
+        <button class="filter-pill" data-filter="c3">Codice 3 (Azzurro)</button>
+        <button class="filter-pill" data-filter="c4">Codice 4 (Verde)</button>
+        <button class="filter-pill" data-filter="fast_track">Percorso Fast Track</button>
+      </div>
+
+      <!-- 13 PPCI Grid Container -->
+      <div class="protocols-grid" id="protocols-grid">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </section>
+
+    <!-- 2. PROTOCOL INTERACTIVE DETAIL VIEW -->
+    <section id="protocol-detail-view" class="protocol-detail-view hidden">
+      
+      <!-- Top Action Navigation -->
+      <div class="detail-nav-bar">
+        <button class="btn-back" id="btn-back">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          <span>Torna a tutti i 13 PPCI</span>
+        </button>
+
+        <span style="font-size: 0.8rem; font-weight: 600; color: var(--text-muted);">
+          Tocco per copiare snippet • Spunta azioni eseguite
+        </span>
+      </div>
+
+      <!-- Protocol Header Banner -->
+      <div class="protocol-header-card" id="detail-header-content">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <!-- Inclusion & Exclusion Criteria Grid -->
+      <div class="criteria-grid">
+        <div class="criteria-box inclusion">
+          <div class="criteria-header inclusion-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>Criteri di Inclusione (Presa in Carico NAVI)</span>
+          </div>
+          <ul class="criteria-list" id="inclusion-list">
+            <!-- Rendered dynamically -->
+          </ul>
+        </div>
+
+        <div class="criteria-box exclusion">
+          <div class="criteria-header exclusion-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+            <span>Criteri di Esclusione (Invio Immediato a Medico / AC)</span>
+          </div>
+          <ul class="criteria-list" id="exclusion-list">
+            <!-- Rendered dynamically -->
+          </ul>
+        </div>
+      </div>
+
+      <!-- RED FLAGS ALERT BOX (High-Contrast Red) -->
+      <div class="red-flags-card">
+        <div class="red-flags-header">
+          <span class="pulse-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+              <line x1="12" y1="9" x2="12" y2="13"></line>
+              <line x1="12" y1="17" x2="12.01" y2="17"></line>
+            </svg>
+          </span>
+          <span>Red Flags / Segni di Allarme Critico</span>
+        </div>
+        <div class="red-flags-sub">
+          All'evidenza di uno o più dei seguenti criteri: Rivalutazione immediata Codice 1 o 2 -&gt; Invio Immediato in Area Critica
+        </div>
+        <ul class="red-flags-list" id="red-flags-list">
+          <!-- Rendered dynamically -->
+        </ul>
+      </div>
+
+      <!-- Guided Operational Flow Step-by-Step -->
+      <div class="section-headline">
+        <h2 class="section-title">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 11 12 14 22 4"></polyline>
+            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+          </svg>
+          <span>Flusso Operativo T1 Guidato (Step-by-Step)</span>
+        </h2>
+        <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600;">
+          Azioni immediate &amp; Copia rapida diario
+        </span>
+      </div>
+
+      <div class="steps-container" id="steps-container">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <!-- Decision Nodes (Snodi Decisionali Sì / No) -->
+      <div class="decision-section">
+        <div class="section-headline">
+          <h2 class="section-title">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+            </svg>
+            <span>Snodi Decisionali &amp; Percorsi Conclusivi</span>
+          </h2>
+          <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600;">
+            Seleziona la risposta per definire l'esito
+          </span>
+        </div>
+
+        <div id="decisions-container">
+          <!-- Rendered dynamically -->
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- Sticky Bottom Bar for Clinical Diary Builder -->
+  <div class="diary-bottom-bar hidden" id="diary-bottom-bar">
+    <div class="diary-bar-inner">
+      <div class="diary-bar-info">
+        <span class="diary-bar-title" id="diary-action-count">0 snippet selezionati</span>
+        <span class="diary-bar-sub">Pronto per la cartella clinica ospedaliera</span>
+      </div>
+      <div class="diary-bar-actions">
+        <button class="btn-open-modal" id="btn-open-diary-modal">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+            <circle cx="12" cy="12" r="3"></circle>
+          </svg>
+          <span>Vedi Testo</span>
+        </button>
+        <button class="btn-copy-all" id="btn-quick-copy-all">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
+          <span>Copia Tutto</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Cartella Clinica / Integrated Diary Note -->
+  <div class="modal-overlay" id="diary-modal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title">Diario Clinico Completo (Cartella Ospedaliera)</h3>
+        <button class="btn-icon" id="btn-close-diary-modal" style="border: none; background: none;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 0.825rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+          Questo testo aggrega in ordine cronologico le azioni T1 spuntate e gli esiti decisionali. Puoi modificarlo prima di copiarlo nel software di PS.
+        </p>
+        <textarea class="full-diary-textarea" id="full-diary-textarea" spellcheck="false"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-copy-snippet" id="btn-copy-full-diary" style="padding: 0.65rem 1.25rem; font-size: 0.9rem;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
+          <span>Copia Diario negli Appunti</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: General Quick Snippets -->
+  <div class="modal-overlay" id="snippets-modal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title">Snippet Rapidi di Presa in Carico</h3>
+        <button class="btn-icon" id="btn-close-snippets-modal" style="border: none; background: none;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 0.825rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+          Frasi standard validate per la cartella clinica di Pronto Soccorso (ARNAS Civico Rev. 1):
+        </p>
+        <div class="quick-snippets-list" id="snippets-modal-list">
+          <!-- Rendered dynamically -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Toast Notification System -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p style="font-weight: 700; color: var(--text-secondary); margin-bottom: 0.25rem;">
+        NaviFlow - Protocolli Presa in Carico Infermieristica (PPCI)
+      </p>
+      <p>Nucleo Avanzato di Valutazione e Intervento (NAVI) • Emergency Medicine • Funzionante 100% Offline</p>
+    </div>
+  </footer>
+
+  <!-- Main JavaScript Module -->
+  <script type="module" src="./js/app.js"></script>
+</body>
+</html>

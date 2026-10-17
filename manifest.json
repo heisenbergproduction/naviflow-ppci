@@ -1,0 +1,33 @@
+{
+  "name": "NaviFlow - PPCI Pronto Soccorso",
+  "short_name": "NaviFlow",
+  "description": "Protocolli di Presa in Carico Infermieristica (PPCI) - Nucleo NAVI Emergency Medicine (ARNAS Civico Rev. 1)",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0f172a",
+  "theme_color": "#0284c7",
+  "categories": ["medical", "health", "productivity"],
+  "lang": "it-IT",
+  "icons": [
+    {
+      "src": "./icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
