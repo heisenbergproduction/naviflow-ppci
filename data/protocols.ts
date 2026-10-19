@@ -50,4 +50,9 @@ export interface GeneralSnippet {
   text: string;
 }
 
-export { PROTOCOLS, GENERAL_SNIPPETS } from './protocols.js';
+// @ts-ignore
+import { PROTOCOLS as rawProtocols, GENERAL_SNIPPETS as rawSnippets } from './protocols.js';
+
+export const PROTOCOLS: Protocol[] = rawProtocols;
+export const GENERAL_SNIPPETS: GeneralSnippet[] = rawSnippets;
+
