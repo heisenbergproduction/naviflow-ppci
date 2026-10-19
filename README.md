@@ -23,7 +23,7 @@ Basata sul Documento Aziendale **ARNAS Civico Rev. 1**.
 
 ## 📋 I 13 Protocolli di Presa in Carico Infermieristica (PPCI)
 
-1. **PPCI #1 - Anemia**: HGB &lt; 7 g/dL (o &lt; 8 con comorbidità). Prelievo urgenza (senza troponina) + EGA venoso + provetta Banca Sangue per Tipo &amp; Screen. Richiesta Emizie Concentrate (EC).
+1. **PPCI #1 - Anemia**: HGB &lt; 7 g/dL (o &lt; 8 con comorbidità). Prelievo urgenza (senza troponina) + EGA venoso + provetta Banca Sangue per Tipo &amp; Screen. Richiesta Emazie Concentrate (EC).
 2. **PPCI #2 - Dispnea**: ECG 12 derivazioni + EGA obbligatori entro 10 min. Target T1 &lt; 10 min. Se alterati -&gt; Rivalutazione Codice 1 o 2 -&gt; Area Critica. Se nella norma -&gt; Prelievi urgenza + BNP.
 3. **PPCI #3 - Frattura di Femore**: Arto accorciato ed extraruotato. Rx Bacino per anche, Rx Femore e Rx Torace concordati con medico NAVI + EGA venoso + 2 EC disponibili alla Banca Sangue + Analgesia precoce.
 4. **PPCI #4 - Dolore Addominale**: Esclusione preliminare RAU. ECG per dolore quadranti superiori. Profilo epato-biliare + lipasi + PCT + EGA venoso. Beta-HCG in donne fertili.

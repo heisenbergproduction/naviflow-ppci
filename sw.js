@@ -3,7 +3,7 @@
  * Gestione Caching Completo 100% Offline (PWA)
  */
 
-const CACHE_NAME = 'naviflow-ppci-v1.1';
+const CACHE_NAME = 'naviflow-ppci-v1.2';
 
 const ASSETS_TO_CACHE = [
   './',

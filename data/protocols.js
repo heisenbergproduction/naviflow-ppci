@@ -70,10 +70,10 @@ export const PROTOCOLS = [
         type: "therapy",
         actions: [
           "Se EGA venoso o emocromo evidenziano HGB < 7 g/dL (o < 8 g/dL con cardiopatia/comorbidità nota): avvisare tempestivamente il medico di guardia.",
-          "Concordare con il medico NAVI/di guardia la prescrizione e prenotazione di Emizie Concentrate (EC).",
+          "Concordare con il medico NAVI/di guardia la prescrizione e prenotazione di Emazie Concentrate (EC).",
           "Mantenimento del paziente in posizione supina o Fowler, evitando cambi posturali bruschi."
         ],
-        snippet: "Refertata/stimata emoglobina con valore critico (HGB < 7 g/dL o < 8 g/dL con comorbidità). Informato tempestivamente il medico NAVI per la richiesta e prenotazione di Sacche di Emotazie Concentrate (EC) presso il SIMT/Banca del Sangue."
+        snippet: "Refertata/stimata emoglobina con valore critico (HGB < 7 g/dL o < 8 g/dL con comorbidità). Informato tempestivamente il medico NAVI per la richiesta e prenotazione di Sacche di Emazie Concentrate (EC) presso il SIMT/Banca del Sangue."
       }
     ],
     
@@ -86,8 +86,8 @@ export const PROTOCOLS = [
             label: "SÌ - HGB < 7 (o < 8 g/dL con comorbidità)",
             outcomeType: "area_critica",
             outcomeTitle: "Allerta Medico NAVI / Richiesta Emocomponenti (EC)",
-            description: "Avviso immediato del medico di guardia. Predisposizione immediata consenso trasfusionale, doppio controllo gruppo sanguigno e richiesta di 2 unità di Emotazie Concentrate al Centro Trasfusionale.",
-            snippet: "Valore di emoglobina critico confermato (HGB < 7 g/dL o < 8 g/dL con comorbidità). Avvisato il medico di guardia: concordata richiesta urgente di Emotazie Concentrate. Paziente monitorato con parametri stabili in attesa di assegnazione sangue."
+            description: "Avviso immediato del medico di guardia. Predisposizione immediata consenso trasfusionale, doppio controllo gruppo sanguigno e richiesta di 2 unità di Emazie Concentrate al Centro Trasfusionale.",
+            snippet: "Valore di emoglobina critico confermato (HGB < 7 g/dL o < 8 g/dL con comorbidità). Avvisato il medico di guardia: concordata richiesta urgente di Emazie Concentrate. Paziente monitorato con parametri stabili in attesa di assegnazione sangue."
           },
           {
             label: "NO - HGB >= 7-8 g/dL stabile e asintomatico",
@@ -248,7 +248,7 @@ export const PROTOCOLS = [
           "Posizionamento di accesso venoso periferico di buon calibro (18G preferenziale).",
           "Prelievi ematici preoperatori d'urgenza: Emocromo, Coagulazione (PT, aPTT, fibrinogeno), Elettroliti, Funzionalità renale ed epatica, Glicemia.",
           "Esecuzione di EGA Venoso per valutazione emoglobina di partenza e acido-base.",
-          "Prelievo e invio immediato al Centro Trasfusionale di provetta per Gruppo e Tipo & Screen, con richiesta di predisposizione di 2 unità di Emotazie Concentrate (EC)."
+          "Prelievo e invio immediato al Centro Trasfusionale di provetta per Gruppo e Tipo & Screen, con richiesta di predisposizione di 2 unità di Emazie Concentrate (EC)."
         ],
         snippet: "Posizionato CVP 18G. Eseguiti prelievi ematici preoperatori ed EGA venoso. Inviata provetta al Centro Trasfusionale per gruppo e tipo con predisposizione di 2 EC disponibili come da protocollo aziendale fratture di femore."
       },
