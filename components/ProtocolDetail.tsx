@@ -12,11 +12,33 @@ interface ProtocolDetailProps {
 }
 
 export const ProtocolDetail: React.FC<ProtocolDetailProps> = ({ protocol, onBack }) => {
+  const [checkedStepActions, setCheckedStepActions] = useState<Record<string, number[]>>({});
   const [checkedSteps, setCheckedSteps] = useState<Record<string, boolean>>({});
   const [selectedDecisions, setSelectedDecisions] = useState<Record<string, number>>({});
 
-  const toggleStep = (stepId: string) => {
-    setCheckedSteps(prev => ({ ...prev, [stepId]: !prev[stepId] }));
+  const toggleAction = (stepId: string, actionIdx: number) => {
+    setCheckedStepActions(prev => {
+      const current = prev[stepId] || [];
+      const exists = current.includes(actionIdx);
+      const updated = exists ? current.filter(i => i !== actionIdx) : [...current, actionIdx];
+      return { ...prev, [stepId]: updated };
+    });
+    setCheckedSteps(prev => ({ ...prev, [stepId]: true }));
+  };
+
+  const getDynamicSnippet = (step: Protocol['operationalSteps'][0]) => {
+    const actions = checkedStepActions[step.id] || [];
+    if (actions.length === 0) {
+      return step.defaultSnippet || step.snippet;
+    }
+    const sorted = [...actions].sort((a, b) => a - b);
+    const parts = sorted.map(idx => {
+      if (step.actionSnippets && step.actionSnippets[idx]) {
+        return step.actionSnippets[idx];
+      }
+      return step.actions[idx];
+    });
+    return parts.join(' ');
   };
 
   const handleSelectDecision = (nodeId: string, optIndex: number) => {
@@ -170,38 +192,58 @@ export const ProtocolDetail: React.FC<ProtocolDetailProps> = ({ protocol, onBack
 
                 {/* Actions Checklist */}
                 <div className="space-y-2">
-                  {step.actions.map((action, aIdx) => (
-                    <label 
-                      key={aIdx} 
-                      className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 dark:text-slate-300 cursor-pointer"
-                    >
-                      <input
-                        type="checkbox"
-                        checked={isChecked}
-                        onChange={() => toggleStep(step.id)}
-                        className="mt-0.5 w-4 h-4 rounded text-sky-600 focus:ring-sky-500 cursor-pointer"
-                      />
-                      <span>{action}</span>
-                    </label>
-                  ))}
+                  {step.actions.map((action, aIdx) => {
+                    const actionList = checkedStepActions[step.id] || [];
+                    const isActionChecked = actionList.includes(aIdx);
+
+                    return (
+                      <label 
+                        key={aIdx} 
+                        className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 dark:text-slate-300 cursor-pointer"
+                      >
+                        <input
+                          type="checkbox"
+                          checked={isActionChecked}
+                          onChange={() => toggleAction(step.id, aIdx)}
+                          className="mt-0.5 w-4 h-4 rounded text-sky-600 focus:ring-sky-500 cursor-pointer"
+                        />
+                        <span>{action}</span>
+                      </label>
+                    );
+                  })}
                 </div>
 
                 {/* Dedicated Snippet Diario Clinico Box */}
-                <div className="bg-slate-50 dark:bg-slate-900/60 rounded-xl border border-slate-200 dark:border-slate-700/80 p-3.5 space-y-2">
-                  <div className="flex items-center justify-between gap-2">
-                    <div className="flex items-center gap-1.5 text-[11px] font-extrabold uppercase tracking-wide text-slate-500 dark:text-slate-400">
-                      <FileText className="w-3.5 h-3.5" />
-                      <span>Snippet Diario Clinico</span>
+                {(() => {
+                  const dynamicSnippet = getDynamicSnippet(step);
+                  const checkedCount = (checkedStepActions[step.id] || []).length;
+                  const isCustom = checkedCount > 0;
+
+                  return (
+                    <div className="bg-slate-50 dark:bg-slate-900/60 rounded-xl border border-slate-200 dark:border-slate-700/80 p-3.5 space-y-2">
+                      <div className="flex items-center justify-between gap-2 flex-wrap">
+                        <div className="flex items-center gap-1.5 text-[11px] font-extrabold uppercase tracking-wide text-slate-500 dark:text-slate-400">
+                          <FileText className="w-3.5 h-3.5" />
+                          <span>Snippet Diario Clinico</span>
+                          <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider ${
+                            isCustom 
+                              ? 'bg-sky-100 text-sky-700 dark:bg-sky-950 dark:text-sky-300 border border-sky-300 dark:border-sky-800' 
+                              : 'bg-slate-200/80 text-slate-600 dark:bg-slate-800 dark:text-slate-400'
+                          }`}>
+                            {isCustom ? `Personalizzato (${checkedCount}/${step.actions.length})` : 'Predefinito di Fase'}
+                          </span>
+                        </div>
+                        <SnippetCopyButton 
+                          text={dynamicSnippet} 
+                          onCopied={() => setCheckedSteps(prev => ({ ...prev, [step.id]: true }))}
+                        />
+                      </div>
+                      <p className="text-xs sm:text-sm italic text-slate-800 dark:text-slate-200 bg-white dark:bg-slate-800 p-2.5 rounded-lg border border-dashed border-slate-200 dark:border-slate-700 select-all transition-colors duration-150">
+                        "{dynamicSnippet}"
+                      </p>
                     </div>
-                    <SnippetCopyButton 
-                      text={step.snippet} 
-                      onCopied={() => setCheckedSteps(prev => ({ ...prev, [step.id]: true }))}
-                    />
-                  </div>
-                  <p className="text-xs sm:text-sm italic text-slate-800 dark:text-slate-200 bg-white dark:bg-slate-800 p-2.5 rounded-lg border border-dashed border-slate-200 dark:border-slate-700 select-all">
-                    "{step.snippet}"
-                  </p>
-                </div>
+                  );
+                })()}
               </div>
             );
           })}

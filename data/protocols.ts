@@ -9,6 +9,8 @@ export interface OperationalStep {
   timing: string;
   type: 'triage' | 'lab' | 'ecg' | 'imaging' | 'therapy' | 'monitoring';
   actions: string[];
+  actionSnippets?: string[];
+  defaultSnippet?: string;
   snippet: string;
 }
 

@@ -48,6 +48,12 @@ export const PROTOCOLS = [
           "Valutazione dello stato di perfusione periferica (tempo di refill capillare, temperatura estremità, pallore congiuntivale).",
           "Anamnesi mirata su perdite ematiche recenti (feci picee, epistassi, menometrorragie, ematuria)."
         ],
+        defaultSnippet: "Attivato PPCI Anemia: presa in carico iniziale del paziente, rilievo dei parametri vitali e anamnesi mirata per perdite ematiche in corso.",
+        actionSnippets: [
+                  "Rilevati parametri vitali completi (PAO bimanuale, FC, SpO2, FR, TC) stabili.",
+                  "Valutata perfusione periferica: estremità normotermiche, refill capillare nei limiti, marcato pallore cutaneo-mucoso.",
+                  "Eseguita anamnesi mirata: paziente nega perdite ematiche macroscopiche attive o recenti."
+        ],
         snippet: "Attivato PPCI Anemia. Rilevati parametri vitali: PAO, FC, SpO2, FR nella norma. Paziente vigile, orientato, cute e mucose diffusamente pallide, non segni di sanguinamento attivo macroscopico in atto. Informato il medico NAVI."
       },
       {
@@ -61,6 +67,13 @@ export const PROTOCOLS = [
           "Esecuzione immediata di EGA Venoso al point-of-care per stima rapida di HGB, ematocrito e lattati.",
           "Prelievo di provetta dedicata per la Banca del Sangue (Gruppo sanguigno e Tipo & Screen / Test di Coombs indiretto)."
         ],
+        defaultSnippet: "PPCI Anemia: avviata fase diagnostica con posizionamento accesso vascolare, prelievi ematici ed EGA di controllo.",
+        actionSnippets: [
+                  "Posizionato accesso venoso periferico calibro 18G in sede idonea.",
+                  "Eseguiti prelievi ematici d'urgenza (emocromo, coagulazione, biochimica ed assetto marziale) inviati in laboratorio.",
+                  "Eseguito EGA venoso point-of-care per stima rapida di emoglobina, ematocrito e lattati.",
+                  "Prelevata provetta per Centro Trasfusionale per gruppo sanguigno e Tipo & Screen."
+        ],
         snippet: "Posizionato accesso venoso periferico calibro 18G. Eseguiti prelievi ematici per profilo urgenza, assetto marziale e provetta Banca Sangue per Tipo & Screen. Eseguito EGA venoso di controllo rapido. Campioni inviati al laboratorio."
       },
       {
@@ -72,6 +85,12 @@ export const PROTOCOLS = [
           "Se EGA venoso o emocromo evidenziano HGB < 7 g/dL (o < 8 g/dL con cardiopatia/comorbidità nota): avvisare tempestivamente il medico di guardia.",
           "Concordare con il medico NAVI/di guardia la prescrizione e prenotazione di Emazie Concentrate (EC).",
           "Mantenimento del paziente in posizione supina o Fowler, evitando cambi posturali bruschi."
+        ],
+        defaultSnippet: "PPCI Anemia: monitoraggio valori emoglobinici, paziente a riposo a letto in attesa referti e presa in carico medica T2.",
+        actionSnippets: [
+                  "Verificato valore di HGB critico: informato tempestivamente il medico di guardia.",
+                  "Concordata con il medico NAVI prescrizione e richiesta urgente di Emazie Concentrate (EC) presso la Banca del Sangue.",
+                  "Paziente posizionato a riposo in Fowler; istruito ad evitare cambi posturali bruschi."
         ],
         snippet: "Refertata/stimata emoglobina con valore critico (HGB < 7 g/dL o < 8 g/dL con comorbidità). Informato tempestivamente il medico NAVI per la richiesta e prenotazione di Sacche di Emazie Concentrate (EC) presso il SIMT/Banca del Sangue."
       }
@@ -145,6 +164,13 @@ export const PROTOCOLS = [
           "Visione immediata del tracciato ECG e dei valori EGA da parte del medico NAVI per validazione.",
           "Posizionamento del paziente in posizione semiseduta (Fowler a 45°-90°)."
         ],
+        defaultSnippet: "Attivato PPCI Dispnea: paziente posizionato in Fowler, avviata valutazione strumentale urgente entro target T1.",
+        actionSnippets: [
+                  "Eseguito ECG a 12 derivazioni entro 10 min dal T0.",
+                  "Eseguito prelievo per emogasanalisi (EGA) per valutazione scambi gassosi e lattati.",
+                  "Tracciato ECG e referto EGA visionati tempestivamente dal medico NAVI per validazione.",
+                  "Paziente assistito e posizionato in posizione semiseduta (Fowler 45°-90°)."
+        ],
         snippet: "Eseguito ECG a 12 derivazioni ed EGA entro 10 minuti dal T0 come da protocollo PPCI Dispnea. Tracciato ed emogasanalisi sottoposti tempestivamente a visione del medico NAVI per validazione."
       },
       {
@@ -157,6 +183,12 @@ export const PROTOCOLS = [
           "Prelievi ematici urgenza: Emocromo con formula, Elettroliti, Funzionalità renale/epatica, Troponina hs, D-Dimero se sospetto di embolia polmonare, BNP / NT-proBNP.",
           "Avvio ossigenoterapia mirata se SpO2 < 92% (target 94-98% in pz non ipercapnico; target 88-92% con Venturi in pz noto per BPCO/ritentore)."
         ],
+        defaultSnippet: "PPCI Dispnea: reperito accesso venoso, avviati esami ematochimici d'urgenza e monitoraggio dell'ossigenazione.",
+        actionSnippets: [
+                  "Reperito accesso venoso periferico in sede idonea.",
+                  "Eseguiti prelievi ematici urgenza comprendenti curva della Troponina hs e BNP/NT-proBNP.",
+                  "Avviata ossigenoterapia mirata per il mantenimento dei valori target di saturazione periferica."
+        ],
         snippet: "Reperito accesso venoso periferico. Eseguiti prelievi ematici secondo profilo urgenza comprensivi di biomarcatori cardiaci (Troponina hs e BNP). Impostata ossigenoterapia mirata al mantenimento della saturazione target."
       },
       {
@@ -167,6 +199,11 @@ export const PROTOCOLS = [
         actions: [
           "Concordare con il medico NAVI/di guardia l'esecuzione di Rx Torace in 2 proiezioni o a letto del paziente.",
           "Eventuale supporto ecografico point-of-care (ecografia polmonare LUS per linee B / versamento pleurico / PNX)."
+        ],
+        defaultSnippet: "PPCI Dispnea: concordate indagini radiologiche ed ecografiche di approfondimento, paziente monitorato in attesa T2.",
+        actionSnippets: [
+                  "Concordata con il medico ed inoltrata richiesta di Rx Torace standard in 2 proiezioni.",
+                  "Eseguita valutazione ecografica polmonare point-of-care (LUS) a supporto del quadro clinico."
         ],
         snippet: "Concordata con il medico di guardia ed inoltrata richiesta di Rx Torace / ecografia polmonare come da protocollo aziendale. Paziente assistito in posizione semiseduta."
       }
@@ -237,6 +274,14 @@ export const PROTOCOLS = [
           "Immobilizzazione dell'arto in asse con cuscini/tutore evitando manovre brusche di mobilizzazione.",
           "Somministrazione di terapia antalgica precoce concordata con il medico NAVI per target NRS < 4."
         ],
+        defaultSnippet: "Attivato PPCI Frattura di Femore: presa in carico iniziale, valutazione neurovascolare distale e contenimento antalgico.",
+        actionSnippets: [
+                  "Rilevati parametri vitali completi nei limiti di compenso.",
+                  "Valutata intensità del dolore su scala NRS e motilità/sensibilità distale dell'arto traumatizzato.",
+                  "Verificata presenza e simmetria dei polsi periferici (pedidio e tibiale posteriore).",
+                  "Posizionato arto traumatizzato in scarico e asse con presidi di immobilizzazione dedicati.",
+                  "Somministrata terapia antalgica precoce concordata con il medico NAVI per target NRS < 4."
+        ],
         snippet: "Attivato PPCI Frattura di Femore. Riscontrato arto inferiore dx/sn accorciato ed extraruotato con impotenza funzionale totale. Polsi periferici presenti e simmetrici. Valutata scala del dolore NRS: somministrata analgesia su indicazione medica NAVI."
       },
       {
@@ -250,6 +295,13 @@ export const PROTOCOLS = [
           "Esecuzione di EGA Venoso per valutazione emoglobina di partenza e acido-base.",
           "Prelievo e invio immediato al Centro Trasfusionale di provetta per Gruppo e Tipo & Screen, con richiesta di predisposizione di 2 unità di Emazie Concentrate (EC)."
         ],
+        defaultSnippet: "PPCI Frattura di Femore: reperito accesso vascolare, avviati esami preoperatori d'urgenza e predisposizione sangue.",
+        actionSnippets: [
+                  "Posizionato accesso venoso periferico calibro 18G in sede idonea.",
+                  "Eseguiti prelievi ematici preoperatori d'urgenza (emocromo, coagulazione, profilo renale ed elettroliti).",
+                  "Eseguito EGA venoso di controllo per valutazione emoglobina di base ed equilibrio acido-base.",
+                  "Prelevata e inviata al Centro Trasfusionale provetta per Gruppo Sanguigno e Tipo & Screen con predisposizione di 2 unità di EC."
+        ],
         snippet: "Posizionato CVP 18G. Eseguiti prelievi ematici preoperatori ed EGA venoso. Inviata provetta al Centro Trasfusionale per gruppo e tipo con predisposizione di 2 EC disponibili come da protocollo aziendale fratture di femore."
       },
       {
@@ -261,6 +313,12 @@ export const PROTOCOLS = [
           "Esecuzione di ECG a 12 derivazioni preoperatorio.",
           "Concordata con il medico NAVI/di guardia la richiesta radiologica: Rx Bacino per anche, Rx Femore e anca interessata in 2 proiezioni, Rx Torace standard preoperatorio.",
           "Accompagnamento protetto del paziente con barella spinale o materassino antidecubito."
+        ],
+        defaultSnippet: "PPCI Frattura di Femore: completate indagini strumentali preoperatorie, paziente mantenuto immobilizzato in attesa referti.",
+        actionSnippets: [
+                  "Eseguito ECG a 12 derivazioni preoperatorio.",
+                  "Concordata con il medico NAVI ed inoltrata richiesta radiologica per Rx Bacino, Rx Femore/Anca e Rx Torace preoperatorio.",
+                  "Garantito trasporto protetto e posizionamento antidecubito del paziente in barella."
         ],
         snippet: "Eseguito ECG a 12 derivazioni. Concordata ed inoltrata al reparto di Radiologia richiesta urgente di Rx Bacino, Rx Anca/Femore e Rx Torace preoperatori. Paziente mantenuto immobilizzato e monitorato."
       }
@@ -331,6 +389,12 @@ export const PROTOCOLS = [
           "Esame obiettivo sommario dei quadranti addominali ed esclusione prioritaria di globo vescicale (se presente globo, dirottare su PPCI RAU).",
           "Se donna in età fertile (12-55 anni): raccolta urine obbligatoria per test di gravidanza (Beta-HCG urinario rapido)."
         ],
+        defaultSnippet: "Attivato PPCI Dolore Addominale: rilevati parametri vitali, esclusa ritenzione acuta d'urina e valutazione clinica iniziale.",
+        actionSnippets: [
+                  "Rilevati parametri vitali completi (PAO, FC, TC, SpO2) nella norma.",
+                  "Eseguito esame obiettivo dei quadranti addominali: escluso globo vescicale (ritenzione urinaria assente).",
+                  "Eseguito test di gravidanza urinario rapido (Beta-HCG) al letto della paziente (esito negativo/documentato)."
+        ],
         snippet: "Attivato PPCI Dolore Addominale. Esclusa ritenzione acuta d'urina (globo assente). Rilevati parametri vitali stabili. Verificata anamnesi ginecologica: eseguito test rapido di gravidanza urinario ove indicato."
       },
       {
@@ -343,6 +407,12 @@ export const PROTOCOLS = [
           "Accesso venoso periferico.",
           "Prelievi ematici urgenza: Emocromo con formula, Funzionalità epatica completa (AST, ALT, Bilirubina totale e frazionata, GammaGT), Lipasi / Amilasi, Funzionalità renale ed elettroliti, PCR e Procalcitonina (PCT), EGA venoso."
         ],
+        defaultSnippet: "PPCI Dolore Addominale: posizionato CVP, avviati prelievi ematici d'urgenza e indagini diagnostiche di primo livello.",
+        actionSnippets: [
+                  "Eseguito ECG a 12 derivazioni per dolore quadranti superiori (escluse alterazioni ischemiche inferiori acute).",
+                  "Posizionato accesso venoso periferico di calibro adeguato.",
+                  "Eseguiti prelievi urgenza (emocromo, indici epato-biliari, lipasi, funzione renale, PCR/PCT ed EGA venoso)."
+        ],
         snippet: "Eseguito ECG a 12 derivazioni per dolore quadranti superiori (tracciato esente da alterazioni ischemiche acute inferiori). Reperito accesso venoso ed eseguiti prelievi urgenza completi con enzimi epato-biliari, lipasi, PCT ed EGA venoso."
       },
       {
@@ -354,6 +424,12 @@ export const PROTOCOLS = [
           "Se dolore localizzato al fianco con irradiazione inguinale (sospetta colica renale): esame urine stick al letto del paziente + richiesta concordata di Ecografia apparato urinario.",
           "Se dolore quadranti inferiori o colecistite sospetta: concordare con il medico NAVI ecografia addome completo o addome superiore.",
           "Valutazione scala NRS e somministrazione di terapia antalgica concordata con il medico NAVI."
+        ],
+        defaultSnippet: "PPCI Dolore Addominale: concordate richieste ecografiche e gestione antalgica, paziente a riposo in attesa T2.",
+        actionSnippets: [
+                  "Eseguito esame chimico-fisico urine al point-of-care e concordata ecografia apparato urinario.",
+                  "Concordata con il medico ed inoltrata richiesta di ecografia addominale mirata.",
+                  "Valutato dolore su scala NRS e somministrata terapia analgesica concordata con il medico NAVI."
         ],
         snippet: "Eseguito esame chimico-fisico urine al letto del pz. Concordata ed inoltrata con il medico di guardia richiesta di esami ecografici. Somministrata terapia antalgica su prescrizione medica NAVI per controllo del dolore."
       }
@@ -425,6 +501,13 @@ export const PROTOCOLS = [
           "Esecuzione di EGA (venoso o arterioso) entro 10 min con valutazione immediata di pH, Lattati, Elettroliti e HGB.",
           "Sottomissione immediata del tracciato ECG ed EGA al medico NAVI."
         ],
+        defaultSnippet: "Attivato PPCI Alterazione Stato di Coscienza: avviata valutazione d'urgenza con glicemia, ECG ed EGA entro target T1.",
+        actionSnippets: [
+                  "Rilevata glicemia capillare point-of-care (esclusa ipoglicemia acuta).",
+                  "Eseguito ECG a 12 derivazioni entro 10 min dal T0.",
+                  "Eseguito EGA per determinazione immediata di pH, lattati, elettroliti e compenso metabolico.",
+                  "Tracciato ECG ed emogasanalisi sottoposti tempestivamente a visione del medico NAVI per validazione."
+        ],
         snippet: "Eseguito stick glicemico immediato, ECG a 12 derivazioni ed EGA entro 10 minuti dal T0 come da protocollo PPCI Alterazione Coscienza. Referti sottoposti a visione immediata del medico NAVI per validazione."
       },
       {
@@ -437,6 +520,12 @@ export const PROTOCOLS = [
           "Prelievi ematici urgenza: Emocromo, Coagulazione, Elettroliti, Funzionalità renale/epatica, Troponina hs, Alcolemia ed eventuale screening tossicologico su urine se indicato.",
           "Valutazione neurologica seriale (GCS e reattività pupillare)."
         ],
+        defaultSnippet: "PPCI Alterazione Coscienza: posizionato CVP, avviati esami ematochimici e monitoraggio neurologico seriale.",
+        actionSnippets: [
+                  "Posizionato accesso venoso periferico in sede idonea.",
+                  "Eseguiti prelievi ematici d'urgenza comprensivi di troponina hs, dosaggio alcolemico e screening tossicologico.",
+                  "Eseguito monitoraggio neurologico seriale: GCS 15 costante, pupille isocoriche e isocicliche reagenti alla luce."
+        ],
         snippet: "Posizionato accesso venoso periferico ed eseguiti prelievi ematici d'urgenza comprensivi di dosaggio alcolemico e screening tossicologico urinario. Monitoraggio GCS pari a 15 con pupille isocoriche e isocicliche."
       },
       {
@@ -446,6 +535,10 @@ export const PROTOCOLS = [
         type: "imaging",
         actions: [
           "Se la sincope ha comportato caduta a terra con trauma cranico o se pz in terapia anticoagulante orale (TAO/DOAC): concordare con il medico NAVI la richiesta urgente di TC Cranio senza mdc."
+        ],
+        defaultSnippet: "PPCI Alterazione Coscienza: completata valutazione di primo livello, paziente vigile e orientato in attesa medica T2.",
+        actionSnippets: [
+                  "Concordata con il medico di guardia richiesta urgente di TC Cranio senza mdc per trauma secondario da caduta."
         ],
         snippet: "Concordata con il medico di guardia richiesta di TC Cranio senza mdc per trauma secondario da caduta a terra in corso di sincope in paziente in trattamento con farmaci anticoagulanti."
       }
@@ -515,6 +608,12 @@ export const PROTOCOLS = [
           "Visione e interpretazione immediata del tracciato da parte del medico NAVI per identificare aritmie sopraventricolari o ventricolari.",
           "Applicazione immediata del monitor continuo dei parametri (traccia ECG e saturimetro a dito)."
         ],
+        defaultSnippet: "Attivato PPCI Cardiopalmo: avviata valutazione elettrocardiografica tempestiva entro 10 min e monitoraggio continuo.",
+        actionSnippets: [
+                  "Eseguito ECG a 12 derivazioni con striscia di ritmo lunga entro 10 minuti dal T0.",
+                  "Tracciato ECG visionato ed interpretato immediatamente dal medico NAVI.",
+                  "Applicato monitoraggio multiparametrico continuo del ritmo cardiaco e saturimetria."
+        ],
         snippet: "Eseguito ECG a 12 derivazioni entro 10 minuti dal T0 come da protocollo PPCI Cardiopalmo. Tracciato sottoposto a visione immediata del medico NAVI. Posizionato monitoraggio continuo con cardiofrequenzimetro."
       },
       {
@@ -526,6 +625,12 @@ export const PROTOCOLS = [
           "Posizionamento accesso venoso periferico (cannula 18G/20G).",
           "Prelievi ematici urgenza: Emocromo, Elettroliti con focus su Potassio (K+), Magnesio (Mg2+) e Calcio ionizzato, Funzionalità renale/tiroidea (TSH se concordato), Troponina hs.",
           "Esecuzione di EGA Arterioso o Venoso con emogasanalizzatore."
+        ],
+        defaultSnippet: "PPCI Cardiopalmo: reperito accesso venoso, avviati esami ematochimici con assetto elettrolitico ed EGA.",
+        actionSnippets: [
+                  "Posizionato accesso venoso periferico cannula 18G/20G.",
+                  "Eseguiti prelievi ematici d'urgenza con focus su potassio, magnesio, calcio ionizzato, troponina hs e profilo renale.",
+                  "Eseguito EGA di controllo per rapida valutazione dell'equilibrio acido-base e dei valori ionici."
         ],
         snippet: "Posizionato accesso venoso periferico. Eseguiti prelievi ematici d'urgenza comprensivi di dosaggio ionico, troponina hs ed EGA arterioso/venoso per assetto metabolico ed elettrolitico. Campioni inviati al laboratorio."
       }
@@ -597,6 +702,13 @@ export const PROTOCOLS = [
           "Applicazione di monitor defibrillatore / monitor continuo delle derivazioni.",
           "Se presenti sintomi respiratori concomitanti (dispnea, tosse con espettorato, desaturazione): eseguire contestualmente EGA arterioso."
         ],
+        defaultSnippet: "Attivato PPCI Dolore Toracico: avviata procedura diagnostica critica con ECG a 12 derivazioni entro target T1 (< 10 min).",
+        actionSnippets: [
+                  "Eseguito tempestivamente ECG a 12 derivazioni entro 10 min dal T0.",
+                  "Tracciato ECG sottoposto a visione immediata del medico NAVI per esclusione di ischemia acuta/STEMI.",
+                  "Applicato monitor defibrillatore e monitoraggio continuo del ritmo cardiaco.",
+                  "Eseguito contestualmente prelievo EGA arterioso per valutazione scambi gassosi in presenza di sintomi respiratori."
+        ],
         snippet: "Eseguito ECG a 12 derivazioni entro 10 minuti dal T0 come da protocollo PPCI Dolore Toracico. Tracciato visionato immediatamente dal medico NAVI per validazione ischemica. Applicato monitoraggio multiparametrico continuo."
       },
       {
@@ -609,6 +721,12 @@ export const PROTOCOLS = [
           "Prelievi ematici urgenza: Emocromo, Coagulazione, Elettroliti, Funzionalità renale/epatica, Troponina ad alta sensibilità (hs-cTn T0), BNP / NT-proBNP, D-Dimero se concordato per sospetta TEP.",
           "Valutazione del dolore toracico su scala NRS."
         ],
+        defaultSnippet: "PPCI Dolore Toracico: posizionato accesso venoso, avviati esami con curva della Troponina hs e BNP.",
+        actionSnippets: [
+                  "Posizionato accesso venoso periferico calibro 18G.",
+                  "Eseguiti prelievi ematici urgenza comprendenti dosaggio Troponina ad alta sensibilità (hs-cTn T0) e BNP/NT-proBNP.",
+                  "Valutata intensità del dolore toracico su scala numerica NRS."
+        ],
         snippet: "Reperito accesso venoso periferico. Eseguiti prelievi ematici profilo urgenza comprendenti curva della Troponina hs (T0) e BNP. Valutata intensità del dolore toracico su scala numerica NRS."
       },
       {
@@ -619,6 +737,11 @@ export const PROTOCOLS = [
         actions: [
           "Concordare con il medico NAVI/di guardia richiesta di Rx Torace standard in 2 proiezioni.",
           "Somministrazione di terapia sintomatica antalgica o nitroderivato sublinguale ESCLUSIVAMENTE previa indicazione medica e verifica di PAS > 100 mmHg."
+        ],
+        defaultSnippet: "PPCI Dolore Toracico: concordata diagnostica radiologica e terapia antalgica, paziente monitorato in attesa T2.",
+        actionSnippets: [
+                  "Concordata con il medico NAVI ed inoltrata richiesta di Rx Torace standard in 2 proiezioni.",
+                  "Somministrata terapia antalgica concordata con il medico previa verifica di stabilità emodinamica (PAS > 100 mmHg)."
         ],
         snippet: "Concordata con il medico di guardia ed inoltrata richiesta di Rx Torace. Somministrata terapia antalgica concordata con il medico NAVI previa verifica di adeguati valori pressori."
       }
@@ -690,6 +813,12 @@ export const PROTOCOLS = [
           "Calcolo dello Shock Index: FC / PAS (se valore > 0.7 -> criterio di esclusione immediato ed invio in Area Critica).",
           "Valutazione della motilità della gabbia toracica, palpazione di crepiti (enfisema sottocutaneo) e valutazione scala NRS del dolore."
         ],
+        defaultSnippet: "Attivato PPCI Trauma Toracico: presa in carico iniziale, calcolo Shock Index ed esclusione segni di insufficienza respiratoria.",
+        actionSnippets: [
+                  "Rilevati parametri vitali completi (PAO, FC, SpO2, FR, TC).",
+                  "Calcolato Shock Index (FC / PAS < 0.7) nella norma, escluso shock conclamato.",
+                  "Valutata gabbia toracica: esclusi enfisema sottocutaneo e respiro paradosso; quantificato dolore su scala NRS."
+        ],
         snippet: "Attivato PPCI Trauma Toracico Diretto. Rilevati parametri vitali: Shock Index < 0.7 calcolato nella norma. Esclusi segni di enfisema sottocutaneo o respiro paradosso. Valutata scala del dolore toracico."
       },
       {
@@ -702,6 +831,12 @@ export const PROTOCOLS = [
           "Esecuzione di EGA (venoso o arterioso) per determinazione di pO2, pCO2, rapporto P/F e lattati.",
           "Posizionamento accesso venoso periferico e prelievo urgenza (Emocromo, Coagulazione, Troponina hs)."
         ],
+        defaultSnippet: "PPCI Trauma Toracico: esecuzione indagini strumentali d'urgenza con ECG a 12 derivazioni, EGA e posizionamento CVP.",
+        actionSnippets: [
+                  "Eseguito ECG a 12 derivazioni per esclusione di contusione miocardica o anomalie di conduzione post-trauma.",
+                  "Eseguito EGA per determinazione di scambi respiratori, rapporto P/F e lattati.",
+                  "Posizionato accesso venoso periferico ed eseguiti prelievi ematici urgenza (emocromo, coagulazione, troponina hs)."
+        ],
         snippet: "Eseguito ECG a 12 derivazioni (esclusi segni di contusione miocardica acuta) ed EGA per valutazione della riserva respiratoria e degli scambi gassosi. Posizionato CVP ed eseguiti prelievi ematici."
       },
       {
@@ -712,6 +847,11 @@ export const PROTOCOLS = [
         actions: [
           "Concordare con il medico NAVI/di guardia richiesta di Rx Torace standard e Rx Emitorace costale mirato.",
           "Se il trauma interessa l'emicostato sinistro medio-basale (dalla VII alla XII costa): concordare con il medico NAVI esecuzione tempestiva di Ecografia addome / FAST mirata ad escludere ematoma o lesione splenica traumatica."
+        ],
+        defaultSnippet: "PPCI Trauma Toracico: concordate indagini radiologiche ed ecografiche di approfondimento in attesa di referti.",
+        actionSnippets: [
+                  "Concordata con il medico ed inoltrata richiesta di Rx Torace in 2P e Rx Emitorace costale mirato.",
+                  "Concordata esecuzione tempestiva di Ecografia mirata/FAST per trauma medio-basale per esclusione lesioni parenchimali."
         ],
         snippet: "Concordata con il medico di guardia richiesta radiologica di Rx Torace in 2P e Rx Emitorace costale. Richiesta ecografia mirata per trauma medio-basale per esclusione di lesioni parenchimali associate."
       }
@@ -783,6 +923,13 @@ export const PROTOCOLS = [
           "Immobilizzazione provvisoria dell'arto con idoneo tutore, stecca a depressione o doccia di cartone in posizione di scarico.",
           "Applicazione di crioterapia locale (borsa del ghiaccio sintetico protetta da telo) per 15-20 minuti ed elevazione dell'arto."
         ],
+        defaultSnippet: "Attivato PPCI Trauma 4 Arti: presa in carico iniziale, valutazione neurovascolare distale e prima immobilizzazione dell'arto.",
+        actionSnippets: [
+                  "Valutato stato neurovascolare distale: polsi periferici presenti e validi, sensibilità e motilità conservate.",
+                  "Rimossi tempestivamente anelli e monili dall'estremità traumatizzata a prevenzione di edema costrittivo.",
+                  "Eseguita immobilizzazione provvisoria dell'arto con tutore/stecca idonea in posizione di scarico.",
+                  "Applicata crioterapia locale (borsa ghiaccio protetta) ed elevato l'arto interessato."
+        ],
         snippet: "Attivato PPCI Trauma 4 Arti Distali. Valutata perfusione periferica e polsi distali presenti e validi. Rimossi anelli e monili dall'estremità interessata. Posizionato tutore di immobilizzazione provvisoria e applicato ghiaccio locale."
       },
       {
@@ -794,6 +941,12 @@ export const PROTOCOLS = [
           "Nelle donne in età fertile: verificare e accertare assenza di stato di gravidanza presunto o noto prima dell'invio ad esame radiologico.",
           "Concordare con il medico NAVI/di guardia la richiesta mirata dell'esame Rx per il segmento scheletrico interessato in almeno 2 proiezioni ortogonali.",
           "Valutazione del dolore su scala NRS e somministrazione di terapia antalgica concordata con il medico NAVI."
+        ],
+        defaultSnippet: "PPCI Trauma 4 Arti: verifica anamnestica, concordata richiesta radiologica mirata e controllo del dolore.",
+        actionSnippets: [
+                  "Verificata e accertata assenza di stato di gravidanza in donna in età fertile.",
+                  "Concordata con il medico NAVI ed inoltrata richiesta di esame radiografico mirato del segmento in 2 proiezioni.",
+                  "Valutata intensità del dolore su scala NRS e somministrata terapia analgesica prescritta dal medico NAVI."
         ],
         snippet: "Escluso stato di gravidanza in donna fertile. Concordata con il medico di guardia ed inoltrata richiesta di esame radiologico mirato del distretto articolare. Somministrata terapia analgesica come da prescrizione medica NAVI."
       }
@@ -864,6 +1017,12 @@ export const PROTOCOLS = [
           "Avvio immediato di idratazione parenterale con Soluzione Fisiologica (NaCl 0.9%) 500 ml EV a deflusso rapido (salvo controindicazioni cardiologiche per insufficienza cardiaca severa).",
           "Rilevazione parametri vitali completi e temperatura corporea."
         ],
+        defaultSnippet: "Attivato PPCI Vomito/Diarrea: posizionato accesso vascolare, avviata reidratazione idro-elettrolitica e rilievo parametri.",
+        actionSnippets: [
+                  "Posizionato accesso venoso periferico calibro 18G/20G in sede idonea.",
+                  "Avviata infusione endovenosa di Soluzione Fisiologica NaCl 0.9% 500 ml a deflusso rapido per reintegro idrico.",
+                  "Rilevati parametri vitali completi e temperatura corporea nei limiti di stabilità."
+        ],
         snippet: "Attivato PPCI Vomito/Diarrea. Reperito accesso venoso periferico. Avviata infusione endovenosa di NaCl 0.9% 500 ml come da protocollo aziendale di riequilibrio idro-elettrolitico."
       },
       {
@@ -876,6 +1035,12 @@ export const PROTOCOLS = [
           "Esecuzione di EGA Venoso per valutazione immediata dell'equilibrio acido-base e dei lattati.",
           "Se la temperatura corporea è TC > 38°C: prelevare provetta per Procalcitonina (PCT) ed attivare in parallelo le procedure del PPCI Febbre."
         ],
+        defaultSnippet: "PPCI Vomito/Diarrea: eseguiti prelievi ematici profilo urgenza ed EGA venoso per valutazione metabolica ed elettrolitica.",
+        actionSnippets: [
+                  "Eseguiti prelievi ematici d'urgenza comprensivi di assetto elettrolitico sierico, profilo renale e glicemia.",
+                  "Eseguito EGA venoso di controllo rapido per valutazione equilibrio acido-base e lattatemia.",
+                  "Prelevata provetta per Procalcitonina (PCT) per presenza di temperatura corporea > 38°C."
+        ],
         snippet: "Eseguiti prelievi ematici per profilo urgenza ed assetto elettrolitico. Eseguito EGA venoso di controllo acido-base e lattati. Inviati campioni al laboratorio analisi."
       },
       {
@@ -885,6 +1050,10 @@ export const PROTOCOLS = [
         type: "therapy",
         actions: [
           "Concordare con il medico NAVI/di guardia la somministrazione di terapia antiemetica sintomatica endovenosa (es. Metoclopramide 10 mg EV o Ondansetron 4 mg EV secondo scheda clinica e controindicazioni)."
+        ],
+        defaultSnippet: "PPCI Vomito/Diarrea: somministrazione terapia antiemetica concordata e rivalutazione clinica del paziente.",
+        actionSnippets: [
+                  "Somministrata terapia antiemetica endovenosa su indicazione e prescrizione del medico NAVI."
         ],
         snippet: "Somministrata terapia antiemetica endovenosa su indicazione e prescrizione del medico NAVI per il controllo della sintomatologia emetica."
       }
@@ -955,6 +1124,13 @@ export const PROTOCOLS = [
           "Eseguire compressione bimanuale continua e costante delle ali nasali contro il setto per almeno 5-10 minuti consecutivi con l'orologio alla mano.",
           "Applicare ghiaccio o impacchi freddi sulla radice del naso e sulla nuca per favorire la vasocostrizione riflessa."
         ],
+        defaultSnippet: "Attivato PPCI Epistassi: corretta postura del paziente, avviate manovre compressive meccaniche e crioterapia.",
+        actionSnippets: [
+                  "Paziente posizionato seduto con il capo flesso in avanti; fornite istruzioni per evitare ingestione ematica.",
+                  "Invitato il paziente ad evacuare delicatamente coaguli dalle cavità nasali.",
+                  "Eseguita compressione bimanuale costante delle ali nasali contro il setto per oltre 5-10 minuti.",
+                  "Applicata crioterapia locale con ghiaccio sulla radice nasale e nuca."
+        ],
         snippet: "Attivato PPCI Epistassi. Paziente posizionato seduto con capo flesso in avanti; evacuati coaguli dalle cavità nasali ed eseguita compressione continua delle ali nasali per oltre 5 minuti associata a crioterapia locale."
       },
       {
@@ -965,6 +1141,11 @@ export const PROTOCOLS = [
         actions: [
           "Se il sanguinamento persiste dopo compressione digitale continua: procedere al tamponamento nasale anteriore di prima istanza introducendo una garza orlata o tampone espandibile (Merocel) imbevuto di Acido Tranexamico (fiala da 500 mg).",
           "Monitoraggio dei parametri vitali con particolare attenzione alla Pressione Arteriosa (PAO) e frequenza cardiaca."
+        ],
+        defaultSnippet: "PPCI Epistassi: esecuzione tamponamento nasale anteriore con agente emostatico e monitoraggio pressorio.",
+        actionSnippets: [
+                  "Eseguito tamponamento nasale anteriore con presidio dedicato imbevuto di soluzione di Acido Tranexamico.",
+                  "Eseguito monitoraggio seriale della pressione arteriosa e della frequenza cardiaca."
         ],
         snippet: "Persistendo stillicidio ematico, eseguito tamponamento nasale anteriore con idoneo presidio imbevuto di soluzione di Acido Tranexamico. Verificata stabilità emodinamica e valori pressori."
       },
@@ -977,6 +1158,12 @@ export const PROTOCOLS = [
           "Posizionamento accesso venoso periferico.",
           "Prelievi ematici: Emocromo con conta piastrinica, Coagulazione completa (PT/INR, aPTT, fibrinogeno), Biochimica generale.",
           "Esecuzione di EGA Venoso per monitoraggio rapido dell'emoglobina e stato acido-base."
+        ],
+        defaultSnippet: "PPCI Epistassi: reperito accesso venoso, inviati esami ematochimici e profilo coagulativo d'urgenza.",
+        actionSnippets: [
+                  "Posizionato accesso venoso periferico in sede idonea.",
+                  "Eseguiti prelievi ematici urgenza con particolare riguardo a emocromo e profilo coagulativo completo (PT/INR, aPTT, fibrinogeno).",
+                  "Eseguito EGA venoso di controllo rapido per monitoraggio dei valori di emoglobina."
         ],
         snippet: "Posizionato accesso venoso periferico ed eseguiti prelievi ematici urgenza con particolare riguardo a emocromo e profilo coagulativo (PT/INR, aPTT). Eseguito EGA venoso di controllo."
       }
@@ -1046,6 +1233,13 @@ export const PROTOCOLS = [
           "Posizionamento di catetere vescicale a permanenza Foley in silicone/latex (calibro ch 14-16 o secondo conformazione anatomica) con rigorosa tecnica asettica.",
           "Gonfiaggio del palloncino con 10 ml di acqua distillata e connessione a sacca di raccolta graduata a circuito chiuso."
         ],
+        defaultSnippet: "Attivato PPCI RAU: accertato globo vescicale dolente, avviata procedura asettica di cateterismo vescicale evacuativo.",
+        actionSnippets: [
+                  "Accertata presenza obiettiva di globo vescicale dolente e palpabile in ipogastrio.",
+                  "Eseguita preparazione sterile e lubrificazione uretrale con gel anestetico.",
+                  "Posizionato con tecnica asettica catetere vescicale Foley a circuito chiuso senza complicanze.",
+                  "Gonfiato palloncino di ancoraggio con 10 ml di acqua distillata e connesso a sacca graduata."
+        ],
         snippet: "Attivato PPCI RAU. Rilevato globo vescicale palpabile e dolente in ipogastrio. Con tecnica asettica e previa instillazione di gel anestetico, posizionato catetere vescicale Foley Ch 14/16 a circuito chiuso. Manovra eseguita senza complicanze."
       },
       {
@@ -1059,6 +1253,13 @@ export const PROTOCOLS = [
           "Esecuzione di stick chimico-fisico delle urine drenate per rilevare leucociti, nitriti, proteine ed ematuria.",
           "Valutazione della regressione della sintomatologia dolorosa ipogastrica."
         ],
+        defaultSnippet: "PPCI RAU: misurazione del ristagno urinario drenato, svuotamento controllato anticolapso ed esame chimico-fisico urine.",
+        actionSnippets: [
+                  "Misurato ristagno urinario drenato nella sacca graduata con immediato sollievo del dolore ipogastrico.",
+                  "Eseguito svuotamento graduale e frazionato a prevenzione di emorragia ex vacuo e reazioni vagali.",
+                  "Eseguito stick chimico-fisico delle urine al point-of-care (leucociti, nitriti, ematuria).",
+                  "Rilevata completa regressione della sintomatologia algica e distensiva ipogastrica."
+        ],
         snippet: "Drenato ristagno urinario di [Volume] ml con immediato sollievo della sintomatologia algica ipogastrica. Svuotamento eseguito con cautela per prevenzione emorragia ex vacuo. Eseguito stick chimico-fisico urine."
       },
       {
@@ -1068,6 +1269,10 @@ export const PROTOCOLS = [
         type: "lab",
         actions: [
           "Se le urine drenate si presentano francamente ematiche con coaguli (ematuria macroscopica conclamata): posizionare accesso venoso ed eseguire prelievi ematici (Emocromo, Coagulazione, Creatinina, Azotemia) ed EGA venoso per HGB."
+        ],
+        defaultSnippet: "PPCI RAU: monitoraggio caratteristiche macroscopiche urine e gestione ematuria, paziente in attesa medica T2.",
+        actionSnippets: [
+                  "Riscontrata ematuria macroscopica: posizionato CVP ed eseguiti prelievi ematici d'urgenza comprensivi di emocromo, coagulazione, funzione renale ed EGA."
         ],
         snippet: "Verificate caratteristiche macroscopiche delle urine. In presenza di ematuria, posizionato CVP ed eseguiti prelievi ematici d'urgenza comprensivi di emocromo, coagulazione, funzione renale ed EGA venoso."
       }
@@ -1137,6 +1342,12 @@ export const PROTOCOLS = [
           "Prelievi ematici urgenza: Emocromo con formula leucocitaria, PCR e Procalcitonina (PCT), Elettroliti, Funzionalità renale ed epatica.",
           "IMPORTANTE: Se indicato dal medico NAVI per sospetta sepsi/infezione sistemica, eseguire 2 set di EMOCOLTURE (2 flaconi per aerobi + 2 per anaerobi da 2 accessi venosi distinti) TASSATIVAMENTE PRIMA dell'eventuale avvio di terapia antibiotica."
         ],
+        defaultSnippet: "Attivato PPCI Febbre: reperito accesso vascolare, avviati prelievi con biomarcatori infiammatori e set emocolture.",
+        actionSnippets: [
+                  "Reperito accesso venoso periferico di calibro adeguato.",
+                  "Eseguiti prelievi ematici profilo urgenza comprendenti PCR, Procalcitonina (PCT), emocromo con formula leucocitaria e funzione renale.",
+                  "Eseguiti 2 set di emocolture (aerobi/anaerobi) da accessi venosi distinti prima dell'avvio di antibiotici."
+        ],
         snippet: "Attivato PPCI Febbre per TC > 38°C. Reperito accesso venoso periferico. Eseguiti prelievi ematici profilo urgenza comprendenti biomarcatori infiammatori (PCR, Procalcitonina PCT). Eseguiti set di emocolture prima di qualsiasi terapia antibiotica."
       },
       {
@@ -1148,6 +1359,11 @@ export const PROTOCOLS = [
           "Esecuzione di EGA Venoso (o EGA Arterioso se presenti sintomi respiratori o desaturazione) con focus su Lattati, pH e compenso metabolico.",
           "Raccolta di campione di urina ed esecuzione immediata di esame chimico-fisico mediante stick al point-of-care (leucociti, nitriti, proteine per sospetta ITU)."
         ],
+        defaultSnippet: "PPCI Febbre: esecuzione EGA per valutazione metabolica/lattati ed esame urine al point-of-care per esclusione urosepsi.",
+        actionSnippets: [
+                  "Eseguito EGA per rapida determinazione di pH, lattati ed equilibrio acido-base.",
+                  "Raccolto campione di urine ed eseguito esame chimico-fisico stick point-of-care per ricerca indici infettivi."
+        ],
         snippet: "Eseguito EGA per determinazione acido-base e dosaggio dei lattati. Raccolto campione urine ed eseguito stick chimico-fisico (positivo/negativo per indici di infezione delle vie urinarie)."
       },
       {
@@ -1158,6 +1374,11 @@ export const PROTOCOLS = [
         actions: [
           "Se TC > 38.0°C con malessere generale: somministrazione di terapia antipiretica su prescrizione del medico NAVI (es. Paracetamolo 1g EV in 100 ml di fisiologica in 15 minuti).",
           "Monitoraggio della defervescenza e della frequenza cardiaca a 30-60 minuti."
+        ],
+        defaultSnippet: "PPCI Febbre: somministrazione terapia sintomatica antipiretica concordata e monitoraggio della defervescenza.",
+        actionSnippets: [
+                  "Somministrata terapia antipiretica con Paracetamolo 1g EV su indicazione e prescrizione del medico NAVI per TC > 38°C.",
+                  "Avviato monitoraggio della defervescenza e della frequenza cardiaca a riposo."
         ],
         snippet: "Rilevata TC > 38°C associata a brivido. Somministrata terapia antipiretica con Paracetamolo 1g EV su indicazione e prescrizione del medico NAVI. Paziente mantenuto a riposo con monitoraggio della temperatura."
       }

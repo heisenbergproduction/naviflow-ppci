@@ -57,6 +57,7 @@ const state = {
   activeFilter: 'all',
   theme: localStorage.getItem('naviflow_theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'),
   checkedSteps: new Set(),
+  checkedStepActions: new Map(), // step_id -> Set of checked action indices (0, 1, 2...)
   selectedDecisions: new Map(), // node_id -> option index
   deferredInstallPrompt: null
 };
@@ -259,6 +260,7 @@ function renderProtocolsGrid() {
 function openProtocolDetail(protocol) {
   state.currentProtocol = protocol;
   state.checkedSteps.clear();
+  state.checkedStepActions.clear();
   state.selectedDecisions.clear();
 
   // Switch views
@@ -276,9 +278,28 @@ function openProtocolDetail(protocol) {
   updateDiaryBottomBar();
 }
 
+// Compute dynamic snippet for a step based on checked actions
+function computeStepDynamicSnippet(step, checkedIndices) {
+  if (!checkedIndices || checkedIndices.size === 0) {
+    return step.defaultSnippet || step.snippet || 'Presa in carico avviata secondo protocollo PPCI.';
+  }
+
+  const sortedIndices = Array.from(checkedIndices).sort((a, b) => a - b);
+  const fragments = sortedIndices.map(idx => {
+    if (step.actionSnippets && step.actionSnippets[idx]) {
+      return step.actionSnippets[idx];
+    }
+    return step.actions[idx];
+  });
+
+  return fragments.join(' ');
+}
+
 // Close Detail View and Return to Dashboard
 function closeProtocolDetail() {
   state.currentProtocol = null;
+  state.checkedSteps.clear();
+  state.checkedStepActions.clear();
   elements.protocolDetailView.classList.remove('active');
   elements.protocolDetailView.classList.add('hidden');
   elements.dashboardView.classList.remove('hidden');
@@ -330,12 +351,19 @@ function renderRedFlags(protocol) {
     .join('');
 }
 
-// Render Operational Steps (T1 Step-by-Step)
+// Render Operational Steps (T1 Step-by-Step with Dynamic Snippet Generation)
 function renderSteps(protocol) {
   elements.stepsContainer.innerHTML = '';
 
   protocol.operationalSteps.forEach((step, index) => {
-    const isChecked = state.checkedSteps.has(step.id);
+    const actionSet = state.checkedStepActions.get(step.id);
+    const hasChecked = !!(actionSet && actionSet.size > 0);
+    const currentSnippet = computeStepDynamicSnippet(step, actionSet);
+    const pillClass = hasChecked ? 'customized' : 'default';
+    const pillText = hasChecked
+      ? `Personalizzato (${actionSet.size}/${step.actions.length} spunte)`
+      : 'Predefinito di Fase';
+
     const stepEl = document.createElement('div');
     stepEl.className = 'step-card';
     stepEl.id = `step-card-${step.id}`;
@@ -360,51 +388,85 @@ function renderSteps(protocol) {
       </div>
 
       <ul class="step-actions-list">
-        ${step.actions.map((action, aIdx) => `
-          <li class="step-action-item">
-            <input type="checkbox" id="chk-${step.id}-${aIdx}" data-step-id="${step.id}" ${isChecked ? 'checked' : ''}>
-            <label for="chk-${step.id}-${aIdx}">${action}</label>
-          </li>
-        `).join('')}
+        ${step.actions.map((action, aIdx) => {
+          const isActionChecked = actionSet ? actionSet.has(aIdx) : false;
+          return `
+            <li class="step-action-item">
+              <input type="checkbox" id="chk-${step.id}-${aIdx}" class="step-action-checkbox" data-step-id="${step.id}" data-action-idx="${aIdx}" ${isActionChecked ? 'checked' : ''}>
+              <label for="chk-${step.id}-${aIdx}">${action}</label>
+            </li>
+          `;
+        }).join('')}
       </ul>
 
-      <!-- Dedicated Clinical Diary Snippet Box -->
+      <!-- Dedicated Clinical Diary Dynamic Snippet Box -->
       <div class="snippet-box">
         <div class="snippet-top">
           <span class="snippet-label">
             ${ICONS.fileText}
-            <span>Diario Clinico (Snippet Precompilato)</span>
+            <span>Diario Clinico</span>
+            <span class="snippet-mode-pill ${pillClass}" id="snippet-pill-${step.id}">${pillText}</span>
           </span>
           <button class="btn-copy-snippet" id="btn-copy-step-${step.id}">
             ${ICONS.copy}
             <span>Copia Frase</span>
           </button>
         </div>
-        <div class="snippet-text">"${step.snippet}"</div>
+        <div class="snippet-text" id="snippet-text-${step.id}">"${currentSnippet}"</div>
       </div>
     `;
 
-    // Step Checkbox toggle
-    const checkboxes = stepEl.querySelectorAll('input[type="checkbox"]');
+    // Step Individual Action Checkbox handler
+    const checkboxes = stepEl.querySelectorAll('.step-action-checkbox');
     checkboxes.forEach(cb => {
       cb.addEventListener('change', () => {
-        const anyChecked = Array.from(checkboxes).some(c => c.checked);
-        if (anyChecked) {
+        const actionIdx = parseInt(cb.dataset.actionIdx, 10);
+        if (!state.checkedStepActions.has(step.id)) {
+          state.checkedStepActions.set(step.id, new Set());
+        }
+        const set = state.checkedStepActions.get(step.id);
+
+        if (cb.checked) {
+          set.add(actionIdx);
           state.checkedSteps.add(step.id);
         } else {
-          state.checkedSteps.delete(step.id);
+          set.delete(actionIdx);
+          if (set.size === 0) {
+            state.checkedSteps.delete(step.id);
+          }
         }
+
+        // Live update the displayed snippet and status pill
+        const newSnippet = computeStepDynamicSnippet(step, set);
+        const textEl = stepEl.querySelector(`#snippet-text-${step.id}`);
+        const pillEl = stepEl.querySelector(`#snippet-pill-${step.id}`);
+
+        if (textEl) {
+          textEl.textContent = `"${newSnippet}"`;
+        }
+        if (pillEl) {
+          if (!set || set.size === 0) {
+            pillEl.className = 'snippet-mode-pill default';
+            pillEl.textContent = 'Predefinito di Fase';
+          } else {
+            pillEl.className = 'snippet-mode-pill customized';
+            pillEl.textContent = `Personalizzato (${set.size}/${step.actions.length} spunte)`;
+          }
+        }
+
         updateDiaryBottomBar();
       });
     });
 
-    // Copy Button Listener
+    // Copy Button Listener (copies dynamic snippet as currently formed)
     const copyBtn = stepEl.querySelector(`#btn-copy-step-${step.id}`);
     copyBtn.addEventListener('click', (e) => {
       e.stopPropagation();
-      copyToClipboard(step.snippet, copyBtn);
-      // Auto-check step on copying phrase
-      checkboxes.forEach(c => c.checked = true);
+      const set = state.checkedStepActions.get(step.id);
+      const textToCopy = computeStepDynamicSnippet(step, set);
+      copyToClipboard(textToCopy, copyBtn);
+      
+      // Ensure step is tracked in bottom bar
       state.checkedSteps.add(step.id);
       updateDiaryBottomBar();
     });
@@ -549,16 +611,20 @@ function generateFullDiaryText() {
   parts.push(`Codice Triage Iniziale: Codice 3/4.`);
   parts.push('----------------------------------------');
 
-  // Collect checked steps or all steps if none checked
+  // Collect checked steps with dynamic action snippets or default if none checked
   if (state.checkedSteps.size > 0) {
     protocol.operationalSteps.forEach(step => {
       if (state.checkedSteps.has(step.id)) {
-        parts.push(`• ${step.snippet}`);
+        const actionSet = state.checkedStepActions.get(step.id);
+        const snippet = computeStepDynamicSnippet(step, actionSet);
+        parts.push(`• ${snippet}`);
       }
     });
   } else {
-    // If none checked, add first step standard
-    parts.push(`• ${protocol.operationalSteps[0]?.snippet || ''}`);
+    // If none checked, add first step standard default
+    const firstStep = protocol.operationalSteps[0];
+    const def = firstStep?.defaultSnippet || firstStep?.snippet || '';
+    parts.push(`• ${def}`);
   }
 
   // Add selected decision outcome if any
