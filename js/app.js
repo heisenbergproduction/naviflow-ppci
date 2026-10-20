@@ -279,7 +279,7 @@ function openProtocolDetail(protocol) {
 }
 
 // Compute dynamic snippet for a step based on checked actions
-function computeStepDynamicSnippet(step, checkedIndices) {
+function computeStepDynamicSnippet(step, checkedIndices, isFirstStep = false, protocol = state.currentProtocol) {
   if (!checkedIndices || checkedIndices.size === 0) {
     return step.defaultSnippet || step.snippet || 'Presa in carico avviata secondo protocollo PPCI.';
   }
@@ -292,7 +292,19 @@ function computeStepDynamicSnippet(step, checkedIndices) {
     return step.actions[idx];
   });
 
-  return fragments.join(' ');
+  const bodyText = fragments.join(' ');
+  const isInitialStep = isFirstStep || (protocol?.operationalSteps?.[0]?.id === step.id) || step.id.endsWith('-step-1');
+
+  // In the first step, always keep an introductory phrase indicating protocol activation
+  if (isInitialStep) {
+    const protoName = protocol ? (protocol.shortName || protocol.name) : '';
+    const prefix = protoName ? `Attivato PPCI ${protoName}.` : 'Attivato PPCI.';
+    if (!bodyText.startsWith('Attivato PPCI')) {
+      return `${prefix} ${bodyText}`;
+    }
+  }
+
+  return bodyText;
 }
 
 // Close Detail View and Return to Dashboard

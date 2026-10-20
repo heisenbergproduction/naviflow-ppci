@@ -26,7 +26,7 @@ export const ProtocolDetail: React.FC<ProtocolDetailProps> = ({ protocol, onBack
     setCheckedSteps(prev => ({ ...prev, [stepId]: true }));
   };
 
-  const getDynamicSnippet = (step: Protocol['operationalSteps'][0]) => {
+  const getDynamicSnippet = (step: Protocol['operationalSteps'][0], isFirstStep: boolean = false) => {
     const actions = checkedStepActions[step.id] || [];
     if (actions.length === 0) {
       return step.defaultSnippet || step.snippet;
@@ -38,7 +38,15 @@ export const ProtocolDetail: React.FC<ProtocolDetailProps> = ({ protocol, onBack
       }
       return step.actions[idx];
     });
-    return parts.join(' ');
+    const joined = parts.join(' ');
+    const isInitialStep = isFirstStep || protocol.operationalSteps[0]?.id === step.id || step.id.endsWith('-step-1');
+    if (isInitialStep) {
+      const prefix = `Attivato PPCI ${protocol.shortName || protocol.name}.`;
+      if (!joined.startsWith('Attivato PPCI')) {
+        return `${prefix} ${joined}`;
+      }
+    }
+    return joined;
   };
 
   const handleSelectDecision = (nodeId: string, optIndex: number) => {
@@ -215,7 +223,7 @@ export const ProtocolDetail: React.FC<ProtocolDetailProps> = ({ protocol, onBack
 
                 {/* Dedicated Snippet Diario Clinico Box */}
                 {(() => {
-                  const dynamicSnippet = getDynamicSnippet(step);
+                  const dynamicSnippet = getDynamicSnippet(step, idx === 0);
                   const checkedCount = (checkedStepActions[step.id] || []).length;
                   const isCustom = checkedCount > 0;
 
